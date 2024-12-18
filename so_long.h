@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2024/12/12 00:26:44 by lbarreto         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:45:49 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ typedef struct s_map {
 
 int     print_error(int error_code);
 char    *open_map(char *file);
+int     find_player_x(t_map data);
+int     find_player_y(t_map data);
+int     find_occurences(char *str, char c);
+t_map	read_map(char *map);
+void    flood_fill(t_map *map, int x, int y);
+
 #endif
