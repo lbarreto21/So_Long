@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:06:56 by lbarreto          #+#    #+#             */
-/*   Updated: 2024/12/18 11:23:38 by lbarreto         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:31:58 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ void    flood_fill(t_map *map, int x, int y)
         map->valid_exit++;
     flood_fill(map, x-1, y);
     flood_fill(map, x+1, y);
-    flood_fill(map, x, y+1);
     flood_fill(map, x, y-1);
+    flood_fill(map, x, y+1);
 }
