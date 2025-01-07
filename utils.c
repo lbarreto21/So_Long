@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:06:56 by lbarreto          #+#    #+#             */
-/*   Updated: 2024/12/18 15:05:27 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:38:17 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,19 @@ int find_player_y(t_map data)
     return (0);
 }
 
-void    flood_fill(t_map *data, int x, int y)
+void    flood_fill(t_map *data, char **map, int x, int y)
 {
     if (x < 0 || y < 0 || x >= data->map_size_x || y >= data->map_size_y)
-        return;
-    if (data->map[x][y] == '1')
-        return;
-    if (data->map[x][y] == 'C')
+        return ;
+    if (map[x][y] == '1' || map[x][y] == 'X')
+        return ;
+    if (map[x][y] == 'C')
         data->valid_collectables++;
-    else if (data->map[x][y] == 'E')
+    else if (map[x][y] == 'E')
         data->valid_exit++;
-    flood_fill(data, x-1, y);
-    flood_fill(data, x+1, y);
-    flood_fill(data, x, y-1);
-    flood_fill(data, x, y+1);
+    map[x][y] = 'X';
+    flood_fill(data, map, x-1, y);
+    flood_fill(data, map, x+1, y);
+    flood_fill(data, map, x, y-1);
+    flood_fill(data, map, x, y+1);
 }

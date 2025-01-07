@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2024/12/18 14:45:49 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:39:11 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int     find_player_x(t_map data);
 int     find_player_y(t_map data);
 int     find_occurences(char *str, char c);
 t_map	read_map(char *map);
-void    flood_fill(t_map *map, int x, int y);
+void    flood_fill(t_map *data, char **map, int x, int y);
 
 #endif
