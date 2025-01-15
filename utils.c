@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:06:56 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/15 14:58:34 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:16:34 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	print_error(int error_code)
 	if (error_code == MAP_INVALID_CHARACTER_ERROR)
 		return (ft_putstr_fd("Invalid character on map", 2),
 			MAP_INVALID_CHARACTER_ERROR);
+	if (error_code == MAP_FORM_ERROR)
+		return (ft_putstr_fd("Map is not a rectangle", 2), MAP_FORM_ERROR);
 	return (-1);
 }
 
@@ -53,7 +55,7 @@ int	find_player_x(t_map data)
 		while (j < data.map_size_y)
 		{
 			if (data.grid[i][j] == 'P')
-				return (i);
+				return (j);
 			j++;
 		}
 		i++;
@@ -73,7 +75,7 @@ int	find_player_y(t_map data)
 		while (j < data.map_size_y)
 		{
 			if (data.grid[i][j] == 'P')
-				return (j);
+				return (i);
 			j++;
 		}
 		i++;
@@ -85,13 +87,13 @@ void	flood_fill(t_map *data, char **map, int x, int y)
 {
 	if (x < 0 || y < 0 || x >= data->map_size_x || y >= data->map_size_y)
 		return ;
-	if (map[x][y] == '1' || map[x][y] == 'X')
+	if (map[y][x] == '1' || map[y][x] == 'X')
 		return ;
-	if (map[x][y] == 'C')
+	if (map[y][x] == 'C')
 		data->valid_collectables++;
-	else if (map[x][y] == 'E')
+	else if (map[y][x] == 'E')
 		data->valid_exit++;
-	map[x][y] = 'X';
+	map[y][x] = 'X';
 	flood_fill(data, map, x - 1, y);
 	flood_fill(data, map, x + 1, y);
 	flood_fill(data, map, x, y - 1);

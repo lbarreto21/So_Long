@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/15 15:19:05 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:59:27 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 enum    e_errors {
 	ARG_ERROR = -1,
 	EXTENSION_ERROR = -2,
-	MAP_INVALID_CHARACTER_ERROR = -3
+	MAP_INVALID_CHARACTER_ERROR = -3,
+	MAP_FORM_ERROR = -4
 };
 
 typedef struct s_map {
