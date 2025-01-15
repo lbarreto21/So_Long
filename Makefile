@@ -1,10 +1,11 @@
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
 SRCS = main.c	\
 handle_map.c	\
-utils.c
+utils.c	\
+utils2.c	
 
 NAME = so_long
 
@@ -15,7 +16,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -g -lmlx_Linux -L./minilibx-linux -lXext -lX11 -lm -o $(NAME) $(LIB)
+	$(CC) $(OBJS) -lmlx_Linux -L./minilibx-linux -lXext -lX11 -lm -o $(NAME) $(LIB)
 
 .c.o:
 	$(CC) -I/usr/include -Imlx_linux -O3 -c $< -o $@

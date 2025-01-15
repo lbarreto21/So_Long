@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/07 15:39:11 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:19:05 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,35 @@
 # include <fcntl.h>
 
 enum    e_errors {
-    ARG_ERROR = -1,
-    EXTENSION_ERROR = -2
+	ARG_ERROR = -1,
+	EXTENSION_ERROR = -2,
+	MAP_INVALID_CHARACTER_ERROR = -3
 };
 
 typedef struct s_map {
-    char    **map;
-    int     map_size_x;
-    int     map_size_y;
-    int     collectables;
-    int     player;
-    int     exit;
-    int     player_x;
-    int     player_y;
-    int     valid_collectables;
-    int     valid_exit;
+	char	*map;
+	char	**grid;
+	int		map_size_x;
+	int		map_size_y;
+	int		collectables;
+	int		player;
+	int		exit;
+	int		player_x;
+	int		player_y;
+	int		valid_collectables;
+	int		valid_exit;
 } t_map;
 
-int     print_error(int error_code);
-char    *open_map(char *file);
-int     find_player_x(t_map data);
-int     find_player_y(t_map data);
-int     find_occurences(char *str, char c);
+int		print_error(int error_code);
+char	*open_map(char *file);
+int		find_player_x(t_map data);
+int		find_player_y(t_map data);
+int		find_occurences(char *str, char c);
 t_map	read_map(char *map);
-void    flood_fill(t_map *data, char **map, int x, int y);
+void	flood_fill(t_map *data, char **map, int x, int y);
+int		is_valid_character(char c);
+int		verify_map_characters(char *map);
+int		verify_map(t_map data);
+void	free_data(t_map data);
 
 #endif

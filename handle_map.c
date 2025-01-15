@@ -6,11 +6,12 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:19:18 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/07 16:14:28 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:14:10 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
 char	*open_map(char *file)
 {
@@ -38,8 +39,9 @@ t_map	read_map(char *map)
 
 	i = 0;
 	grid = ft_split(map, '\n');
-	data.map = ft_split(map, '\n');
-	data.map_size_y = ft_strlen(data.map[0]);
+	data.map = ft_strdup(map);
+	data.grid = ft_split(map, '\n');
+	data.map_size_y = ft_strlen(data.grid[0]);
 	data.map_size_x = find_occurences(map, '\n') + 1;
 	data.collectables = find_occurences(map, 'C');
 	data.player = find_occurences(map, 'P');
@@ -53,5 +55,13 @@ t_map	read_map(char *map)
 	while (i <= data.map_size_x)
 		free(grid[i++]);
 	free(grid);
+	
 	return (data);
+}
+
+int	verify_map(t_map data)
+{
+	if(verify_map_characters(data.map) < 0)
+		return (MAP_INVALID_CHARACTER_ERROR);
+	return (1);
 }
