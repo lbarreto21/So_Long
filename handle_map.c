@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:19:18 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/15 17:13:19 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:33:45 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,53 @@ t_map	read_map(char *map)
 	return (data);
 }
 
-int	verify_map(t_map data)
+int	verify_map(t_map *data)
 {
 	int		i;
 	char	**grid;
 
 	i = 1;
-	grid = ft_split(data.map, '\n');
-	if (verify_map_characters(data.map) < 0)
+	grid = ft_split(data->map, '\n');
+	if (verify_map_characters(data->map) < 0)
 		return (MAP_INVALID_CHARACTER_ERROR);
-	while (i < data.map_size_y)
+	while (i < data->map_size_y)
 	{
-		if (ft_strlen(data.grid[0]) != ft_strlen(data.grid[i]))
-			return (MAP_FORM_ERROR);
+		if (ft_strlen(data->grid[0]) != ft_strlen(data->grid[i]))
+			return (MAP_FORMAT_ERROR);
 		i++;
 	}
-	flood_fill(&data, grid, data.player_x, data.player_y);
+	flood_fill(data, grid, data->player_x, data->player_y);
+	i = 0;
+	while (i < data->map_size_y)
+		free(grid[i++]);
+	free(grid);
+	return (verify_map2(data));
+}
+
+int	verify_map2(t_map *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->map_size_x)
+	{
+		if (data->grid[0][i] != '1' ||
+		data->grid[data->map_size_y - 1][i] != '1')
+			return (MAP_BOX_ERROR);
+		i++;
+	}
+	i = 0;
+	while (i < data->map_size_y)
+	{
+		if (data->grid[i][0] != '1' ||
+		data->grid[i][data->map_size_x - 1] != '1')
+			return (MAP_BOX_ERROR);
+		i++;
+	}
+	if (data->collectables < 1 || data->exit != 1 || data->player != 1)
+		return (MAP_COMPONENTS_ERROR);
+	if (data->collectables != data->valid_collectables
+		|| data->exit != data->valid_exit)
+		return (MAP_INVALID_PATH_ERROR);
 	return (1);
 }

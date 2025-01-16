@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:06:56 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/15 17:16:34 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:34:23 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,23 @@ int	print_error(int error_code)
 {
 	ft_putstr_fd("ERROR: ", 2);
 	if (error_code == ARG_ERROR)
-		return (ft_putstr_fd("Wrong number of arguments", 2), ARG_ERROR);
+		return (ft_putstr_fd("Wrong number of arguments.", 2), ARG_ERROR);
 	if (error_code == EXTENSION_ERROR)
-		return (ft_putstr_fd("Wrong extension of file", 2), EXTENSION_ERROR);
+		return (ft_putstr_fd("Wrong extension of file.", 2), EXTENSION_ERROR);
 	if (error_code == MAP_INVALID_CHARACTER_ERROR)
-		return (ft_putstr_fd("Invalid character on map", 2),
+		return (ft_putstr_fd("Invalid character on map.", 2),
 			MAP_INVALID_CHARACTER_ERROR);
-	if (error_code == MAP_FORM_ERROR)
-		return (ft_putstr_fd("Map is not a rectangle", 2), MAP_FORM_ERROR);
+	if (error_code == MAP_FORMAT_ERROR)
+		return (ft_putstr_fd("Map is not a rectangle.", 2), MAP_FORMAT_ERROR);
+	if (error_code == MAP_COMPONENTS_ERROR)
+		return (ft_putstr_fd("Map must have at least 1 collectable and \
+exactly 1 exit and 1 player.", 2), MAP_COMPONENTS_ERROR);
+	if (error_code == MAP_BOX_ERROR)
+		return (ft_putstr_fd("Map is not closed around by walls(1)", 2),
+			MAP_BOX_ERROR);
+	if (error_code == MAP_INVALID_PATH_ERROR)
+		return (ft_putstr_fd("Some components have non-valid path to reach it",
+				2), MAP_INVALID_PATH_ERROR);
 	return (-1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:50:47 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/15 15:20:05 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:24:27 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		return (print_error(EXTENSION_ERROR));
 	map = open_map(argv[1]);
 	data = read_map(map);
-	verification = verify_map(data);
+	verification = verify_map(&data);
 	if (verification < 0)
 	{
 		free_data(data);

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/15 16:59:27 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:31:02 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ enum    e_errors {
 	ARG_ERROR = -1,
 	EXTENSION_ERROR = -2,
 	MAP_INVALID_CHARACTER_ERROR = -3,
-	MAP_FORM_ERROR = -4
+	MAP_FORMAT_ERROR = -4,
+	MAP_COMPONENTS_ERROR = -5,
+	MAP_BOX_ERROR = -6,
+	MAP_INVALID_PATH_ERROR = -7
 };
 
 typedef struct s_map {
@@ -47,7 +50,8 @@ t_map	read_map(char *map);
 void	flood_fill(t_map *data, char **map, int x, int y);
 int		is_valid_character(char c);
 int		verify_map_characters(char *map);
-int		verify_map(t_map data);
+int		verify_map(t_map *data);
 void	free_data(t_map data);
+int		verify_map2(t_map *data);
 
 #endif
