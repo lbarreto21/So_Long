@@ -5,7 +5,8 @@ CFLAGS = -Wall -Werror -Wextra
 SRCS = main.c	\
 handle_map.c	\
 utils.c	\
-utils2.c	
+utils2.c	\
+verification_utils.c
 
 NAME = so_long
 

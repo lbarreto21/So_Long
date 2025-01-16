@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:06:56 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/16 15:12:40 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:24:14 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	print_error(int error_code)
 	if (error_code == MAP_FORMAT_ERROR)
 		return (ft_putstr_fd("Map is not a rectangle.", 2), MAP_FORMAT_ERROR);
 	if (error_code == MAP_COMPONENTS_ERROR)
-		return (ft_putstr_fd("Map must have at least 1 collectable", 2),
-			MAP_COMPONENTS_ERROR);
+		return (ft_putstr_fd("Map must have at least 1 collectable and \
+exactly 1 exit and 1 player", 2), MAP_COMPONENTS_ERROR);
 	if (error_code == MAP_IS_NOT_CLOSED_ERROR)
 		return (ft_putstr_fd("Map is not closed around by walls(1)", 2),
 			MAP_IS_NOT_CLOSED_ERROR);
