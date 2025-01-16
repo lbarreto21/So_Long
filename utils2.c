@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:35:01 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/15 16:46:35 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:51:20 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,4 @@ int	is_valid_character(char c)
 	if (c == 'P' || c == '0' || c == '1' || c == 'E' || c == 'C' || c == '\n')
 		return (1);
 	return (0);
-}
-
-int	verify_map_characters(char *map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		if (is_valid_character(map[i]) == 0)
-			return (MAP_INVALID_CHARACTER_ERROR);
-		i++;
-	}
-	return (1);
 }

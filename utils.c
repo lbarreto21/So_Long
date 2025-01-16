@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:06:56 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/16 14:34:23 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:12:40 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,17 @@ int	print_error(int error_code)
 	if (error_code == MAP_FORMAT_ERROR)
 		return (ft_putstr_fd("Map is not a rectangle.", 2), MAP_FORMAT_ERROR);
 	if (error_code == MAP_COMPONENTS_ERROR)
-		return (ft_putstr_fd("Map must have at least 1 collectable and \
-exactly 1 exit and 1 player.", 2), MAP_COMPONENTS_ERROR);
-	if (error_code == MAP_BOX_ERROR)
+		return (ft_putstr_fd("Map must have at least 1 collectable", 2),
+			MAP_COMPONENTS_ERROR);
+	if (error_code == MAP_IS_NOT_CLOSED_ERROR)
 		return (ft_putstr_fd("Map is not closed around by walls(1)", 2),
-			MAP_BOX_ERROR);
-	if (error_code == MAP_INVALID_PATH_ERROR)
-		return (ft_putstr_fd("Some components have non-valid path to reach it",
-				2), MAP_INVALID_PATH_ERROR);
+			MAP_IS_NOT_CLOSED_ERROR);
+	if (error_code == MAP_COLLECTABLE_PATH_ERROR)
+		return (ft_putstr_fd("There is a collectable without a valid path",
+				2), MAP_COLLECTABLE_PATH_ERROR);
+	if (error_code == MAP_EXIT_PATH_ERROR)
+		return (ft_putstr_fd("There is not a valid path to the exit", 2),
+			MAP_EXIT_PATH_ERROR);
 	return (-1);
 }
 
