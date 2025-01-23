@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:19:18 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/16 15:20:09 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:26:49 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ char	*open_map(char *file)
 t_map	read_map(char *map)
 {
 	t_map	data;
-	int		i;
 
-	i = 0;
+	ft_bzero(&data, sizeof(t_map));
 	data.map = ft_strdup(map);
 	data.grid = ft_split(map, '\n');
 	data.map_size_x = ft_strlen(data.grid[0]);
@@ -43,10 +42,11 @@ t_map	read_map(char *map)
 	data.collectables = find_occurences(map, 'C');
 	data.player = find_occurences(map, 'P');
 	data.exit = find_occurences(map, 'E');
-	data.player_x = find_player_x(data);
-	data.player_y = find_player_y(data);
-	data.valid_collectables = 0;
-	data.valid_exit = 0;
+	if (data.player != 0)
+	{
+		data.player_x = find_player_x(data);
+		data.player_y = find_player_y(data);
+	}
 	free(map);
 	return (data);
 }
@@ -61,7 +61,5 @@ int	verify_map(t_map *data)
 		return (MAP_IS_NOT_CLOSED_ERROR);
 	if (data->collectables < 1 || data->exit != 1 || data->player != 1)
 		return (MAP_COMPONENTS_ERROR);
-	if (verify_map_path(data) != 1)
-		return (verify_map_path(data));
-	return (1);
+	return (verify_map_path(data));
 }

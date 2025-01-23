@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/16 15:18:48 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:31:55 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ typedef struct s_map {
 	int		valid_collectables;
 	int		valid_exit;
 } t_map;
+
+typedef struct s_mlx {
+	void	*mlx;
+	void	*window;
+	int		window_height;
+	int		window_lenght;
+} t_mlx;
 
 int		print_error(int error_code);
 char	*open_map(char *file);
