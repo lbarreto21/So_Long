@@ -7,7 +7,9 @@ handle_map.c	\
 utils.c	\
 utils2.c	\
 verification_utils.c	\
-handle_window.c
+handle_window.c	\
+handle_sprites.c	\
+handle_movements.c
 
 NAME = so_long
 

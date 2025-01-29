@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:50:50 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/23 16:07:52 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:41:25 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ int	verify_map_path(t_map *data)
 	if (data->collectables != data->valid_collectables)
 		return (MAP_COLLECTABLE_PATH_ERROR);
 	if (data->exit != data->valid_exit)
-		return (MAP_EXIT_PATH_ERROR);	
+		return (MAP_EXIT_PATH_ERROR);
 	return (1);
 }

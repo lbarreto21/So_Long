@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/29 18:57:53 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:35:50 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,21 @@
 # include "minilibx-linux/mlx.h"
 # include <fcntl.h>
 
-#ifndef IMAGE_PROPORTION
-# define IMAGE_PROPORTION 112
+#ifndef SPRITE
+# define SPRITE 112
 #endif
+
+enum	e_keycodes {
+	LEFT = 65361,
+	UP = 65362,
+	RIGHT = 65363,
+	DOWN = 65364,
+	A = 97,
+	W = 119,
+	S = 115,
+	D = 100,
+	ESC = 65307
+};
 
 enum    e_errors {
 	ARG_ERROR = -1,
@@ -80,8 +92,12 @@ void	free_data(t_map data);
 int		verify_map_format(t_map *data);
 int		verify_map_is_closed(t_map *data);
 int		verify_map_path(t_map *data);
-t_mlx	mlx_initialization(t_map data);
+t_mlx	mlx_initialization(t_map *data);
 void	*import_sprites(char *file_path, t_mlx *mlx_data);
 void	import_all_sprites(t_mlx mlx_data, t_map *map_data);
+void	render_sprite(t_mlx *mlx, t_map map, int x, int y);
+void	render_map(t_map map_data, t_mlx mlx_data);
+int 	movement_player(int keycode, t_map *map, t_mlx *mlx);
+void    moveplayer(char direction, t_map *map);
 
 #endif
