@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/23 16:31:55 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:26:17 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
 # include <fcntl.h>
+
+#ifndef IMAGE_PROPORTION
+# define IMAGE_PROPORTION 64
+#endif
 
 enum    e_errors {
 	ARG_ERROR = -1,
@@ -49,6 +53,14 @@ typedef struct s_mlx {
 	int		window_lenght;
 } t_mlx;
 
+typedef struct	s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
 int		print_error(int error_code);
 char	*open_map(char *file);
 int		find_player_x(t_map data);
@@ -63,5 +75,7 @@ void	free_data(t_map data);
 int		verify_map_format(t_map *data);
 int		verify_map_is_closed(t_map *data);
 int		verify_map_path(t_map *data);
+t_mlx	mlx_initialization(t_map data);
+void	create_window(t_map data);
 
 #endif

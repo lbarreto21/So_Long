@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:50:47 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/23 16:38:43 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:26:48 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ int	main(int argc, char **argv)
 		free_data(data);
 		return (print_error(verification));
 	}
-	mlx_data.mlx = mlx_init();
-	mlx_data.window = mlx_new_window(mlx_data.mlx, 1600, 900, "so_long");
-	mlx_loop(mlx_data.mlx);
+	create_window(data);
 	printf("mapa: \n%s\n", data.map);
 	printf("Map size x: %d\nMap size y: %d\ncollectables: %d\nplayer: %d\nexit: %d\nplayer x: %d\nplayer y: %d\nvalid collectables: %d\nvalid exits: %d\n", data.map_size_x, data.map_size_y, data.collectables, data.player, data.exit, data.player_x, data.player_y, data.valid_collectables, data.valid_exit);
 	free_data(data);

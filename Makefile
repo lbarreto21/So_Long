@@ -6,7 +6,8 @@ SRCS = main.c	\
 handle_map.c	\
 utils.c	\
 utils2.c	\
-verification_utils.c
+verification_utils.c	\
+handle_window.c
 
 NAME = so_long
 
