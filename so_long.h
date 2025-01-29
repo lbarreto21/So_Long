@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/29 16:26:17 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:57:53 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 
 #ifndef IMAGE_PROPORTION
-# define IMAGE_PROPORTION 64
+# define IMAGE_PROPORTION 112
 #endif
 
 enum    e_errors {
@@ -44,6 +44,11 @@ typedef struct s_map {
 	int		player_y;
 	int		valid_collectables;
 	int		valid_exit;
+	void	*player_img;
+	void	*wall_img;
+	void	*floor_img;
+	void	*collectable_img;
+	void	*exit_img;
 } t_map;
 
 typedef struct s_mlx {
@@ -76,6 +81,7 @@ int		verify_map_format(t_map *data);
 int		verify_map_is_closed(t_map *data);
 int		verify_map_path(t_map *data);
 t_mlx	mlx_initialization(t_map data);
-void	create_window(t_map data);
+void	*import_sprites(char *file_path, t_mlx *mlx_data);
+void	import_all_sprites(t_mlx mlx_data, t_map *map_data);
 
 #endif
