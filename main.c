@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:50:47 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/29 20:13:21 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:53:04 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,14 @@ int	main(int argc, char **argv)
 	verification = verify_map(&data);
 	if (verification < 0)
 	{
-		free_data(data);
+		free_data(&data);
 		return (print_error(verification));
 	}
 	mlx_data = mlx_initialization(&data);
+	mlx_data.map = &data;
 	render_map(data, mlx_data);
 	mlx_key_hook(mlx_data.window, movement_player, &mlx_data);
 	mlx_loop(mlx_data.mlx);
-	printf("mapa: \n%s\n", data.map);
-	printf("Map size x: %d\nMap size y: %d\ncollectables: %d\nplayer: %d\nexit: %d\nplayer x: %d\nplayer y: %d\nvalid collectables: %d\nvalid exits: %d\n", data.map_size_x, data.map_size_y, data.collectables, data.player, data.exit, data.player_x, data.player_y, data.valid_collectables, data.valid_exit);
-	free_data(data);
+	free_mlx(&mlx_data);
 	return (0);
 }

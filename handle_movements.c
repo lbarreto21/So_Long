@@ -12,44 +12,58 @@
 
 #include "so_long.h"
 
-int movement_player(int keycode, t_map *map, t_mlx *mlx)
+int movement_player(int keycode, t_mlx *mlx)
 {
 	if (keycode == LEFT || keycode == A)
-		moveplayer('A', map);
+		moveplayer('A', mlx->map);
 	if (keycode == RIGHT || keycode == D)
-		moveplayer('D', map);
+		moveplayer('D', mlx->map);
 	if (keycode == UP || keycode == W)
-		moveplayer('W', map);
+		moveplayer('W', mlx->map);
 	if (keycode == DOWN || keycode == S)
-        moveplayer('S', map);
+        moveplayer('S', mlx->map);
+	if (mlx->map->grid[mlx->map->player_y][mlx->map->player_x] == 'E' && \
+	mlx->map->collectables == 0)
+		return (close_game(mlx));
+	render_map(*mlx->map, *mlx);
 	return (0);
 }
 
 void	  	moveplayer(char direction, t_map *map)
 {
+	if (verify_and_move(direction, map) == 1)
+	{
+		map->movements_count++;
+		my_printf("Movements done: %d\n", map->movements_count);
+	}
+	if (map->grid[map->player_y][map->player_x] == 'C')
+	{
+		map->grid[map->player_y][map->player_x] = '0';
+		map->collectables--;
+	}
+}
+
+int	verify_and_move(char direction, t_map *map)
+{
 	if (direction == 'A')
 	{
-		if (map->grid[map->player_x][map->player_y - 1] != '1')
-			map->player_y--;
+		if (map->grid[map->player_y][map->player_x - 1] != '1')
+			return (map->player_x--, 1);
 	}
 	if (direction == 'D')
 	{
-		if (map->grid[map->player_x][map->player_y + 1] != '1')
-			map->player_y++;
+		if (map->grid[map->player_y][map->player_x + 1] != '1')
+			return (map->player_x++, 1);
 	}
 	if (direction == 'W')
 	{
-		if (map->grid[map->player_x + 1][map->player_y] != '1')
-			map->player_x++;
+		if (map->grid[map->player_y - 1][map->player_x] != '1')
+			return (map->player_y--, 1);
 	}
 	if (direction == 'S')
 	{
-		if (map->grid[map->player_x - 1][map->player_y] != '1')
-			map->player_x--;
+		if (map->grid[map->player_y + 1][map->player_x] != '1')
+			return (map->player_y++, 1);
 	}
-	if (map->grid[map->player_x][map->player] == 'C')
-	{
-		map->grid[map->player_x][map->player] = '0';
-		map->collectables--;
-	}
+	return (0);
 }

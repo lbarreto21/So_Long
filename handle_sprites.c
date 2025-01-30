@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:46:54 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/29 20:01:31 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:24:56 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,24 @@ void	import_all_sprites(t_mlx mlx_data, t_map *map_data)
 	map_data->exit_img = import_sprites("assets/Exit.xpm", &mlx_data);
 }
 
-void	render_sprite(t_mlx *mlx, t_map map, int x, int y)
+void	render_sprite(t_mlx *mlx, t_map *map, int x, int y)
 {
-	if (map.grid[y][x] == '1')
+	if (map->grid[y][x] == '1')
 		mlx_put_image_to_window(mlx->mlx, mlx->window, \
-		map.wall_img, x * SPRITE, y * SPRITE);
-	if (map.grid[y][x] == '0')
+		map->wall_img, x * SPRITE, y * SPRITE);
+	if (map->grid[y][x] == '0')
 		mlx_put_image_to_window(mlx->mlx, mlx->window, \
-		map.floor_img, x * SPRITE, y * SPRITE);
-	if (map.grid[y][x] == 'P')
+		map->floor_img, x * SPRITE, y * SPRITE);
+	if (map->grid[y][x] == 'P')
 		mlx_put_image_to_window(mlx->mlx, mlx->window, \
-		map.floor_img, x * SPRITE, y * SPRITE);
-	if (map.grid[y][x] == 'C')
+		map->floor_img, x * SPRITE, y * SPRITE);
+	if (map->grid[y][x] == 'C')
 		mlx_put_image_to_window(mlx->mlx, mlx->window, \
-		map.collectable_img, x * SPRITE, y * SPRITE);
-	if (map.grid[y][x] == 'E')
+		map->collectable_img, x * SPRITE, y * SPRITE);
+	if (map->grid[y][x] == 'E' && map->collectables == 0)
 		mlx_put_image_to_window(mlx->mlx, mlx->window, \
-		map.exit_img, x * SPRITE, y * SPRITE);
+		map->exit_img, x * SPRITE, y * SPRITE);
+	else if (map->grid[y][x] == 'E')
+		mlx_put_image_to_window(mlx->mlx, mlx->window, \
+		map->floor_img, x * SPRITE, y * SPRITE);	
 }
