@@ -37,3 +37,6 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean $(NAME)
+
+norm:
+	norminette *.c
