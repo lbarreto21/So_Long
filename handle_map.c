@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:19:18 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/31 19:45:05 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:20:41 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ char	*open_map(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
 		return (NULL);
-	}
 	line = get_next_line(fd);
 	map = ft_strdup("");
 	while (line)
@@ -57,6 +55,8 @@ t_map	read_map(char *map)
 
 int	verify_map(t_map *data)
 {
+	if (!ft_strlen(data->map))
+		return (MAP_ERROR);
 	if (verify_map_characters(data->map) != 1)
 		return (MAP_INVALID_CHARACTER_ERROR);
 	if (verify_map_format(data) != 1)
