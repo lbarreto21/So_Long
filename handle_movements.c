@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*    	                                                                        */
+/*    	                                                                      */
 /*                                                        :::      ::::::::   */
 /*   handle_movements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int movement_player(int keycode, t_mlx *mlx)
+int	movement_player(int keycode, t_mlx *mlx)
 {
 	if (keycode == LEFT || keycode == A)
 		moveplayer('A', mlx->map);
@@ -21,7 +21,7 @@ int movement_player(int keycode, t_mlx *mlx)
 	if (keycode == UP || keycode == W)
 		moveplayer('W', mlx->map);
 	if (keycode == DOWN || keycode == S)
-        moveplayer('S', mlx->map);
+		moveplayer('S', mlx->map);
 	if (mlx->map->grid[mlx->map->player_y][mlx->map->player_x] == 'E' && \
 	mlx->map->collectables == 0)
 		return (close_game(mlx));
@@ -29,7 +29,7 @@ int movement_player(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-void	  	moveplayer(char direction, t_map *map)
+void	moveplayer(char direction, t_map *map)
 {
 	if (verify_and_move(direction, map) == 1)
 	{

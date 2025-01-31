@@ -6,17 +6,15 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:50:47 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/30 16:53:04 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:20:54 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	char	*file_extension;
-	char	*map;
 	t_map	data;
 	int		verification;
 	t_mlx	mlx_data;
@@ -24,10 +22,10 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (print_error(ARG_ERROR));
 	file_extension = ft_strnstr(argv[1], ".ber", ft_strlen(argv[1]));
-	if (!file_extension)
+	if (verify_extension(file_extension) == 0)
 		return (print_error(EXTENSION_ERROR));
-	map = open_map(argv[1]);
-	data = read_map(map);
+	data.map = open_map(argv[1]);
+	data = read_map(data.map);
 	verification = verify_map(&data);
 	if (verification < 0)
 	{

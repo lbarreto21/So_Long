@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:06:56 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/23 16:40:28 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:17:05 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int	find_player_x(t_map data)
 	int	j;
 
 	i = 0;
-	while (i < data.map_size_x)
+	while (i < data.map_size_y)
 	{
 		j = 0;
-		while (j < data.map_size_y)
+		while (j < data.map_size_x)
 		{
 			if (data.grid[i][j] == 'P')
 				return (j);
@@ -81,10 +81,10 @@ int	find_player_y(t_map data)
 	int	j;
 
 	i = 0;
-	while (i < data.map_size_x)
+	while (i < data.map_size_y)
 	{
 		j = 0;
-		while (j < data.map_size_y)
+		while (j < data.map_size_x)
 		{
 			if (data.grid[i][j] == 'P')
 				return (i);

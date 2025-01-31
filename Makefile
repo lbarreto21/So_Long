@@ -1,6 +1,6 @@
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS =  -g -Wall -Werror -Wextra
 
 SRCS = main.c	\
 handle_map.c	\

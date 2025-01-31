@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:46:54 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/30 16:24:56 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:47:33 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void	render_sprite(t_mlx *mlx, t_map *map, int x, int y)
 		map->exit_img, x * SPRITE, y * SPRITE);
 	else if (map->grid[y][x] == 'E')
 		mlx_put_image_to_window(mlx->mlx, mlx->window, \
-		map->floor_img, x * SPRITE, y * SPRITE);	
+		map->floor_img, x * SPRITE, y * SPRITE);
 }

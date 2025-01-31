@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/30 16:52:38 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:04:37 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ int		verify_and_move(char direction, t_map *map);
 void	destroy_mlx(t_mlx *data);
 int		close_game(t_mlx *data);
 void	free_mlx(t_mlx *data);
+int		verify_extension(char *file_ext);
 
 #endif

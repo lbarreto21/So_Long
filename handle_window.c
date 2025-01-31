@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:55:53 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/30 16:45:53 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:48:08 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	render_map(t_map map, t_mlx mlx_data)
 		}
 		x++;
 	}
-	mlx_put_image_to_window(mlx_data.mlx,mlx_data.window, \
+	mlx_put_image_to_window(mlx_data.mlx, mlx_data.window, \
 	map.player_img, map.player_x * SPRITE, map.player_y * SPRITE);
 }
 
@@ -50,5 +50,5 @@ int	close_game(t_mlx *data)
 {
 	destroy_mlx(data);
 	free_data(data->map);
-	return (0);	
+	return (0);
 }
