@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:44:29 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/31 17:04:37 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:51:45 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ enum    e_errors {
 	MAP_COMPONENTS_ERROR = -5,
 	MAP_IS_NOT_CLOSED_ERROR = -6,
 	MAP_COLLECTABLE_PATH_ERROR = -7,
-	MAP_EXIT_PATH_ERROR = -8
+	MAP_EXIT_PATH_ERROR = -8,
+	MAP_ERROR = -9
 };
 
 typedef struct s_map {

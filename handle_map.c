@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:19:18 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/23 16:26:49 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:45:05 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ char	*open_map(char *file)
 	char	*line;
 
 	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		return (NULL);
+	}
 	line = get_next_line(fd);
 	map = ft_strdup("");
 	while (line)

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 23:06:56 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/31 17:17:05 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:52:08 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ exactly 1 exit and 1 player", 2), MAP_COMPONENTS_ERROR);
 	if (error_code == MAP_EXIT_PATH_ERROR)
 		return (ft_putstr_fd("There is not a valid path to the exit", 2),
 			MAP_EXIT_PATH_ERROR);
+	if (error_code == MAP_ERROR)
+		return (ft_putstr_fd("Invalid map", 2), MAP_ERROR);
 	return (-1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:35:01 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/31 17:14:57 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:54:31 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,12 @@ int	is_valid_character(char c)
 	return (0);
 }
 
-int	verify_extension(char *file_ext)
+int	verify_extension(char *file_path)
 {
-	char	*right_ext;
-	int		max;
+	char	*file_extension;
 
-	max = ft_strlen(file_ext);
-	if (ft_strlen(right_ext) > max)
-		max = ft_strlen(right_ext);
-	right_ext = ft_strdup(".ber");
-	if (ft_strncmp(file_ext, right_ext, max))
-	{
-		free(right_ext);
+	file_extension = ft_strnstr(file_path, ".ber", ft_strlen(file_path));
+	if (!file_extension)
 		return (0);
-	}
-	free(right_ext);
-	return (1);
+	return (!ft_strncmp(file_extension, ".ber", 4));
 }
