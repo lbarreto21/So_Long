@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:50:47 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/01/31 20:20:30 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:50:22 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	mlx_data.map = &data;
 	render_map(data, mlx_data);
 	mlx_key_hook(mlx_data.window, movement_player, &mlx_data);
+	mlx_hook(mlx_data.window, 17, 0, close_game, &mlx_data);
 	mlx_loop(mlx_data.mlx);
 	free_mlx(&mlx_data);
-	return (0);
 }

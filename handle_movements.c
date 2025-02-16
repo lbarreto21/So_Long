@@ -22,8 +22,8 @@ int	movement_player(int keycode, t_mlx *mlx)
 		moveplayer('W', mlx->map);
 	if (keycode == DOWN || keycode == S)
 		moveplayer('S', mlx->map);
-	if (mlx->map->grid[mlx->map->player_y][mlx->map->player_x] == 'E' && \
-	mlx->map->collectables == 0)
+	if ((mlx->map->grid[mlx->map->player_y][mlx->map->player_x] == 'E' && \
+	mlx->map->collectables == 0) || keycode == ESC)
 		return (close_game(mlx));
 	render_map(*mlx->map, *mlx);
 	return (0);
